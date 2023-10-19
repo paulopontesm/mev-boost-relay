@@ -1,6 +1,7 @@
 name: Release
 
 on:
+  pull_request:
   workflow_dispatch:
   push:
     tags:
@@ -61,7 +62,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: true
+          push: false
           build-args: |
             VERSION=${{ env.RELEASE_VERSION }}
           platforms: linux/amd64,linux/arm64
